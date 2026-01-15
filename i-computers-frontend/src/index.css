@@ -1,0 +1,22 @@
+@import "tailwindcss";
+
+@theme {
+    --color-primary: #F4F7FE;
+    --color-secondary: #1E1E2F;
+    --color-accent: #FF007F;
+}
+    /* Customize the scrollbar track */
+    ::-webkit-scrollbar-track {
+      background-color: transparent; /* Tailwind equivalent: bg-gray-100 */
+    }
+
+    /* Customize the scrollbar thumb */
+    ::-webkit-scrollbar-thumb {
+      background-color: #a29f9f; /* Tailwind equivalent: bg-gray-600 */
+      border-radius: 4px; /* Tailwind equivalent: rounded-full */
+    }
+
+    /* Customize the entire scrollbar (e.g., width) */
+    ::-webkit-scrollbar {
+      width: 8px; /* Tailwind equivalent for width: w-2 */
+    }
