@@ -18,7 +18,7 @@ pipeline {
         stage('Build Backend Image') {
             steps {
                 dir('backend') {
-                    sh 'docker build -t $BACKEND_IMAGE .'
+                    bat "docker build -t $BACKEND_IMAGE ."
                 }
             }
         }
@@ -26,14 +26,14 @@ pipeline {
         stage('Build Frontend Image') {
             steps {
                 dir('frontend') {
-                    sh 'docker build -t $FRONTEND_IMAGE .'
+                    bat "docker build -t $FRONTEND_IMAGE ."
                 }
             }
         }
 
         stage('Login to Docker Hub') {
             steps {
-                sh '''
+                bat '''
                 echo $DOCKERHUB_CREDS_PSW | docker login -u $DOCKERHUB_CREDS_USR --password-stdin
                 '''
             }
@@ -41,7 +41,7 @@ pipeline {
 
         stage('Push Images') {
             steps {
-                sh '''
+                bat '''
                 docker push $BACKEND_IMAGE
                 docker push $FRONTEND_IMAGE
                 '''
