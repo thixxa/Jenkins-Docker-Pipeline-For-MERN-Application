@@ -1,0 +1,167 @@
+🚀 Jenkins Docker CI Pipeline for MERN Application
+
+This project demonstrates a real-world CI (Continuous Integration) pipeline using Jenkins and Docker for a MERN stack application.
+The pipeline automatically builds Docker images for both frontend and backend services and pushes them to Docker Hub using secure credentials.
+
+📌 Project Overview
+
+In modern DevOps workflows, applications are packaged as Docker images and built automatically using CI pipelines.
+This project shows how Jenkins can be used to:
+
+Pull source code from GitHub
+
+Build Docker images for a MERN application
+
+Authenticate securely with Docker Hub
+
+Push Docker images automatically
+
+This pipeline focuses on CI only (build & push). Deployment is intentionally separated as a future step.
+
+🏗️ Architecture
+
+GitHub Repository
+        │
+        ▼
+   Jenkins Pipeline
+        │
+        ├── Build Backend Docker Image
+        ├── Build Frontend Docker Image
+        │
+        ▼
+   Docker Hub Registry
+
+🔧 Tech Stack
+
+Jenkins – CI automation
+
+Docker – Containerization
+
+GitHub – Source code management
+
+Docker Hub – Image registry
+
+MERN Stack
+
+MongoDB (Atlas)
+
+Express.js
+
+React.js
+
+Node.js
+
+📁 Repository Structure
+.
+├── i-computers-backend/
+│   ├── Dockerfile
+│   └── source code
+│
+├── i-computers-frontend/
+│   ├── Dockerfile
+│   └── source code
+│
+├── Jenkinsfile
+└── README.md
+
+⚙️ Jenkins Pipeline Stages
+1️⃣ Checkout Source Code
+
+Jenkins pulls the latest code from GitHub.
+
+Reads the Jenkinsfile to execute pipeline steps.
+
+2️⃣ Build Backend Docker Image
+
+Uses the backend Dockerfile
+
+Builds the image:
+
+thisandaprasanjana/backend:latest
+
+3️⃣ Build Frontend Docker Image
+
+Uses a multi-stage Docker build
+
+Builds the image:
+
+thisandaprasanjana/frontend:latest
+
+4️⃣ Login to Docker Hub
+
+Uses Jenkins credentials (username + access token)
+
+Credentials are masked for security
+
+5️⃣ Push Images to Docker Hub
+
+Pushes both images to Docker Hub automatically
+
+🐳 Docker Images
+
+The pipeline publishes the following images:
+
+Backend
+
+thisandaprasanjana/backend:latest
+
+
+Frontend
+
+thisandaprasanjana/frontend:latest
+
+
+Images are publicly available on Docker Hub and can be pulled from any machine.
+
+▶️ Run the Application (Optional)
+
+You can run the images locally using Docker:
+
+docker run -d -p 5000:5000 thisandaprasanjana/backend:latest
+docker run -d -p 3000:80 thisandaprasanjana/frontend:latest
+
+
+Or use Docker Compose (recommended for multi-container setup).
+
+🔐 Security Practices
+
+Docker Hub credentials are stored securely in Jenkins
+
+Secrets are not hardcoded in the repository
+
+Passwords are masked in Jenkins logs
+
+🎯 Learning Outcomes
+
+Through this project, I learned:
+
+How Jenkins CI pipelines work in real projects
+
+How to Dockerize frontend and backend services
+
+Secure credential management in Jenkins
+
+Automating Docker image builds and pushes
+
+CI best practices for MERN applications
+
+🚀 Future Improvements
+
+Add Docker Compose based deployment
+
+Implement automatic deployment stage (CD)
+
+Move pipeline to Linux-based Jenkins agent
+
+Kubernetes deployment using Helm
+
+GitHub Webhook for auto-triggered builds
+
+👤 Author
+
+Thisanda Prasanjana
+Computer Engineering Undergraduate | Aspiring DevOps Engineer
+
+📌 GitHub: https://github.com/thixxa
+
+📌 Docker Hub: https://hub.docker.com/u/thisandaprasanjana
