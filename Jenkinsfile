@@ -17,7 +17,7 @@ pipeline {
 
         stage('Build Backend Image') {
             steps {
-                dir('backend') {
+                dir('i-computers-backend') {
                     bat "docker build -t $BACKEND_IMAGE ."
                 }
             }
@@ -25,7 +25,7 @@ pipeline {
 
         stage('Build Frontend Image') {
             steps {
-                dir('frontend') {
+                dir('i-computers-frontend') {
                     bat "docker build -t $FRONTEND_IMAGE ."
                 }
             }
