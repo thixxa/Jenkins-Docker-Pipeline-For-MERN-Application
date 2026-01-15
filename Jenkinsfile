@@ -33,17 +33,22 @@ pipeline {
 
         stage('Login to Docker Hub') {
             steps {
-                bat '''
-                echo $DOCKERHUB_CREDS_PSW | docker login -u $DOCKERHUB_CREDS_USR --password-stdin
-                '''
+                withCredentials([usernamePassword(
+                    credentialsId: 'test-dockerhubpassword',
+                    usernameVariable: 'DOCKERHUB_CREDS_USR',
+                    passwordVariable: 'DOCKERHUB_CREDS_PSW'
+                )]) {
+                    bat 'echo %DOCKERHUB_CREDS_PSW% | docker login -u %DOCKERHUB_CREDS_USR% --password-stdin'
+                }
             }
         }
+
 
         stage('Push Images') {
             steps {
                 bat '''
-                docker push $BACKEND_IMAGE
-                docker push $FRONTEND_IMAGE
+                docker push %BACKEND_IMAGE%
+                docker push %FRONTEND_IMAGE%
                 '''
             }
         }
